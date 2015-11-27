@@ -1,0 +1,29 @@
+{
+  "name": "worldview",
+  "version": "0.0.1",
+  "description": "Full stack MEAN application. An example of an SPA using MongoDB, Express, AngularJS & NodeJS",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/listingslab/worldview.git"
+  },
+  "keywords": [
+    "MEAN",
+    "MongoDB",
+    "express",
+    "angular",
+    "NodeJS"
+  ],
+  "author": "Chris Dorward",
+  "license": "MIT",
+  "dependencies": {
+    "mysql": "~2.9.0",
+    "express": "~4.0.0",
+    "mongoose": "~3.6.13",
+    "body-parser": "~1.0.1",
+    "method-override" : "~2.0.2" 
+  }
+}
