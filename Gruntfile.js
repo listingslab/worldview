@@ -6,7 +6,7 @@ module.exports = function(grunt) {
 
 		// check all js files for errors
 	    jshint: {
-	      all: ['src/js/**/*.js', 'src/js/*.js', 'app/**/*.js', 'server.js', 'config/js/*.js'] 
+	      all: ['src/angular/**/*.js', 'src/angular/*.js', 'app/**/*.js', 'server/app.js', 'server/config/*.js'] 
 	    },
 
 	    // take all the js files and minify them into app.min.js
@@ -45,7 +45,7 @@ module.exports = function(grunt) {
 	        tasks: ['less', 'cssmin']
 	      },
 	      js: {
-	        files: ['src/js/**/*.js'],
+	        files: ['src/angular/**/*.js', 'Gruntfile.js'],
 	        tasks: ['jshint', 'uglify']
 	      }
 	    },
