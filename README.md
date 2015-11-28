@@ -2,7 +2,9 @@
 
 Full stack MEAN application. An example of an SPA using MongoDB, Express, AngularJS & NodeJS
 
-## Install dependancies
+## Installation
+
+### Install dependancies
 
 clone this repo into your working directory
 cd into the directory
