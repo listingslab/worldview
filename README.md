@@ -1,6 +1,6 @@
 # Worldview
 
-Full stack example of a MEAN application. An SPA using MongoDB, Express, AngularJS & NodeJS
+Full stack MEAN application. An example of an SPA using MongoDB, Express, AngularJS & NodeJS
 
 ## Install dependancies
 
@@ -9,13 +9,6 @@ cd into the directory
 run ```npm install``` & ```bower install```
 
 type ```grunt``` to run the workflow process and start the server
-
-
-    ,-----.,--.                  ,--. 
-    '  .--./|  | ,---. ,--.,--. ,-|  |
-    '  '--'\|  |' '-' ''  ''  '\ `-' |
-     `-----'`--' `---'  `----'  `---' 
-    ----------------------------------
     
 
 		                                         MDMN88N
@@ -77,3 +70,10 @@ type ```grunt``` to run the workflow process and start the server
 		NDNOND$ON87DNN?I
 		   NNMNNMZ8MN$I7
 		         N   N
+
+
+    ,-----.,--.                  ,--. 
+    '  .--./|  | ,---. ,--.,--. ,-|  |
+    '  '--'\|  |' '-' ''  ''  '\ `-' |
+     `-----'`--' `---'  `----'  `---' 
+    ----------------------------------
