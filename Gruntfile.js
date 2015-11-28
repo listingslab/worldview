@@ -6,7 +6,7 @@ module.exports = function(grunt) {
 
 		// check all js files for errors
 	    jshint: {
-	      all: ['src/angular/**/*.js', 'src/angular/*.js', 'app/**/*.js', 'server/app.js', 'server/config/*.js'] 
+	      all: ['src/angular/**/*.js', 'src/angular/*.js', 'server/**/*.js', 'server/app.js', 'server/config/*.js'] 
 	    },
 
 	    // take all the js files and minify them into app.min.js

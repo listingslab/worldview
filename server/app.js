@@ -31,6 +31,21 @@ app.use(methodOverride('X-HTTP-Method-Override'));
 // set the static files location /public/img will be /img for users
 app.use(express.static('./public'));
 
+
+// API router ==============================================
+// Use the API router if the url requires it, otherwise 
+// routing is handled by angular SPA
+
+var router			= require('./api/api_router');
+app.use('/api', router);
+
+//The 404 Route (ALWAYS Keep this as the last route)
+app.get('*', function(req, res){
+  res.send('what??? 404, brah', 404);
+});
+
+
+
 // start app ===============================================
 app.listen(port, ip);               
 
