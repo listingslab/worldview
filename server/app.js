@@ -9,11 +9,11 @@ var methodOverride = require('method-override');
 // configuration ===========================================
     
 // config files
-var db = require('./config/db');
+var db				= require('./config/db');
 
 // set our port
-var port = process.env.PORT || 8080;
-var ip = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1'; 
+var port			= process.env.PORT || 8080;
+var ip				= process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1'; 
 
 // connect to our mongoDB database 
 // (uncomment after you enter in your own credentials in config/db.js)
@@ -33,7 +33,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride('X-HTTP-Method-Override')); 
 
 // set the static files location /public/img will be /img for users
-app.use(express.static(__dirname + '/public')); 
+app.use(express.static('./public')); 
+
 
 // routes ==================================================
 require('./app/routes')(app); // configure our routes
@@ -44,7 +45,7 @@ require('./app/routes')(app); // configure our routes
 app.listen(port, ip);               
 
 // Log to console                    
-console.log('Server running on \n'+ip+':' + port);
+console.log('Server running on \nhttp://'+ip+':' + port);
 
 // expose app           
 exports = module.exports = app;
