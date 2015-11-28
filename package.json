@@ -1,6 +1,6 @@
 {
   "name": "worldview",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Full stack MEAN application. An example of an SPA using MongoDB, Express, AngularJS & NodeJS",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -37,5 +37,5 @@
     "body-parser": "~1.0.1",
     "method-override" : "~2.0.2" 
   },
-  "main": "server.js"
+  "main": "server/app.js"
 }
