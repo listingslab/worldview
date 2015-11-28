@@ -13,7 +13,7 @@ module.exports = function(grunt) {
 	    uglify: {
 	      build: {
 	        files: {
-	          'public/js/app.min.js': ['src/js/**/*.js', 'src/js/*.js']
+	          'public/js/worldview_angular.min.js': ['src/angular/**/*.js', 'src/angular/*.js']
 	        }
 	      }
 	    },
