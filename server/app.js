@@ -41,7 +41,7 @@ app.use(express.static('./public'));
 
 //The 404 Route (ALWAYS Keep this as the last route)
 app.get('*', function(req, res){
-  res.send('what??? 404, brah', 404);
+  res.sendfile('./public/404.html');
 });
 
 
