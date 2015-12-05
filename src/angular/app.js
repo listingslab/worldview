@@ -1,4 +1,6 @@
 
-// listingslab Angular
+// worldview Angular SPA
+var app = angular.module('worldviewApp', [
 
-var app = angular.module('worldviewApp', []);
+]);
+

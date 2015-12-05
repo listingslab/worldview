@@ -4,19 +4,35 @@ module.exports = function(grunt) {
 
 		// JS TASKS ================================================================
 
-		// check all js files for errors
+		// lint all angular js files
 	    jshint: {
 	      all: ['src/angular/**/*.js', 'src/angular/*.js', 'server/**/*.js', 'server/app.js', 'server/config/*.js'] 
 	    },
 
-	    // take all the js files and minify them into app.min.js
+	    // concatonate all the angular files into one
+	    concat: {  
+		    js: {
+		        src: [
+		       		'src/angular/app.js',
+		            'src/angular/controllers/**.js'  
+		        ],
+		        dest: 'public/js/app.concat.js'
+		    }
+		},
+
+	    // Minify them into worldviewApp.min.js
 	    uglify: {
 	      build: {
+	      	options: {
+		     	// Don't mangle the strings because it breaks Angular
+			  	mangle: false
+			},
 	        files: {
-	          'public/js/worldview_angular.min.js': ['src/angular/**/*.js', 'src/angular/*.js']
+	          'public/js/app.min.js': ['public/js/app.concat.js']
 	        }
 	      }
 	    },
+
 
 	    // CSS TASKS ===============================================================
 	    // process the less file to main.css
@@ -45,8 +61,8 @@ module.exports = function(grunt) {
 	        tasks: ['less', 'cssmin']
 	      },
 	      js: {
-	        files: ['src/angular/**/*.js', 'Gruntfile.js'],
-	        tasks: ['jshint', 'uglify']
+	        files: ['src/angular/*.js', 'src/angular/**/*.js', 'Gruntfile.js'],
+	        tasks: ['jshint', 'concat', 'uglify']
 	      }
 	    },
 
@@ -76,8 +92,9 @@ module.exports = function(grunt) {
   	grunt.loadNpmTasks('grunt-contrib-cssmin');
   	grunt.loadNpmTasks('grunt-contrib-watch');
   	grunt.loadNpmTasks('grunt-concurrent');
+  	grunt.loadNpmTasks('grunt-contrib-concat');
 
   	// register the nodemon task when we run grunt
-  	grunt.registerTask('default', ['less', 'cssmin', 'jshint', 'uglify', 'concurrent']); 
+  	grunt.registerTask('default', ['less', 'cssmin', 'jshint', 'concat', 'concurrent']); 
 
 };

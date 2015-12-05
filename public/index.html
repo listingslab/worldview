@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="worldviewApp">
   <head>
 
     <meta charset="utf-8">
@@ -42,33 +42,24 @@
               <a href="/" target="_self">
                 <img class="masthead-brand" src="img/worldview_logo.png" />
               </a>
+
             </div>
           </div>
 
           <div class="inner cover">
-            
             <p class="lead">
-
               <div class="container lead">
-                <div class="col-xs-offset-0 col-xs-12 col-md-6">
-
-                  Left hand bit
-                  
+                <div class="col-xs-offset-0 col-xs-12 col-md-6" ng-controller="countriesController">
+                  {{title}}
                 </div>
 
                 <div class="col-xs-0 col-md-2"></div>
 
-                <div class="col-xs-offset-1 col-xs-10 col-md-4">
-
+                <div class="col-xs-offset-1 col-xs-10 col-md-4" >
                   Right hand bit
-
                 </div>
 
-
               </div>
-
-            
-
             </p>
             
           </div>
@@ -76,11 +67,11 @@
           <div class="mastfoot">
             <div class="inner">
               <div class="address">
-                Listingslab<br />Full Stack MEAN Software
+              <a data-toggle="modal" href="#terms_modal">Listingslab</a>
+                <br />Full Stack MEAN Software
               </div>
 
               <a title="View on Github" href="https://github.com/listingslab/worldview" target="_blank"><img src="img/icons/github.png" class="social_icons" /></a>
-
             </div>
           </div>
 
@@ -98,10 +89,10 @@
         <!-- Modal content-->
         <div class="modal-content">
           <div class="modal-header">
-            <h3>Terms and conditions</h3>
+            <h3>About Listingslab</h3>
           </div>
           <div class="modal-body">
-            <h4>Lorem ipsum dolor sit amet</h4>
+            <h4>Full stack MEAN Development</h4>
 
             <p>Consectetur adipiscing elit. Nam bibendum eros eu ante ornare, a auctor massa porttitor. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In hac habitasse platea dictumst. Integer sed ultricies orci, sit amet commodo leo. Aenean congue egestas mi, non vestibulum felis condimentum eu.</p>
 
@@ -115,11 +106,17 @@
       </div>
     </div> <!-- End Modal-->
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
+    
+
     <script src="libs/jquery/dist/jquery.min.js"></script>
     <script src="libs/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="libs/angular/angular.min.js"></script>
+
+    <!-- GRUNTSTART -->
+    <script src="js/app.min.js"></script>
+    <!-- GRUNTEND -->
+
+    <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
 
   </body>
 </html>
