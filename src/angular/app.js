@@ -1,4 +1,4 @@
 
-angular.module('worldviewApp', [
-	//'ngRoute', 
-]);
+// listingslab Angular
+
+var app = angular.module('worldviewApp', []);

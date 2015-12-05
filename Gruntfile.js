@@ -19,20 +19,20 @@ module.exports = function(grunt) {
 	    },
 
 	    // CSS TASKS ===============================================================
-	    // process the less file to style.css
+	    // process the less file to main.css
 	    less: {
 	      build: {
 	        files: {
-	          'public/css/style.css': 'src/css/style.less'
+	          'public/css/main.css': 'src/css/main.less'
 	        }
 	      }
 	    },
 
-	    // take the processed style.css file and minify
+	    // take the processed main.css file and minify
 	    cssmin: {
 	      build: {
 	        files: {
-	          'public/css/style.min.css': 'public/css/style.css'
+	          'public/css/main.min.css': 'public/css/main.css'
 	        }
 	      }
 	    },
