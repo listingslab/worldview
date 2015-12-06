@@ -3,7 +3,12 @@
 var express			= require('express');
 var router			= express.Router();
 var mongoose		= require('mongoose');
-mongoose.connect('mongodb://localhost/worldview');
+
+//var db				= require('./config/db');
+
+var mongoConnectStr = 'mongodb://localhost/worldview';
+console.log('Connecting to ' + mongoConnectStr);
+mongoose.connect(mongoConnectStr);
 
 var Country     	= require('./models/country');
 
