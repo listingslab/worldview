@@ -19,11 +19,17 @@ if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD){
   process.env.OPENSHIFT_APP_NAME;
 }
 mongoose.connect(mongoConnectStr);
+var Country     	= require('./api/models/country');
+
 
 
 //The 404 Route (ALWAYS Keep this as the last route)
 app.get('*', function(req, res){
-	res.send(mongoConnectStr + '<br />ok?');
+	Country.find(function(err, countries) {
+			if (err)
+				res.send(err);
+			res.json(countries);
+		});
 });
 
 
