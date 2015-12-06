@@ -35,7 +35,7 @@ app.use(express.static('./public'));
 // Use the API router if the url requires it, otherwise 
 // routing is handled by angular SPA
 
-var router			= require('./api/api');
+var router			= require('./api/api_router');
 app.use('/api', router);
 
 //The 404 Route (ALWAYS Keep this as the last route)
