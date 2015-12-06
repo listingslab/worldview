@@ -7,7 +7,7 @@ var mongoose		= require('mongoose');
 //var db				= require('./config/db');
 
 var mongoConnectStr = 'mongodb://localhost/worldview';
-console.log('Connecting to ' + mongoConnectStr);
+
 // if OPENSHIFT env variables are present, use the available connection info:
 if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD){
   connection_string = process.env.OPENSHIFT_MONGODB_DB_USERNAME + ":" +
@@ -16,7 +16,9 @@ if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD){
   process.env.OPENSHIFT_MONGODB_DB_PORT + '/' +
   process.env.OPENSHIFT_APP_NAME;
 }
+console.log('Connecting to ' + mongoConnectStr);
 mongoose.connect(mongoConnectStr);
+
 
 var Country     	= require('./models/country');
 
