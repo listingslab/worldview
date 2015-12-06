@@ -25,11 +25,12 @@ var Country     	= require('./api/models/country');
 
 //The 404 Route (ALWAYS Keep this as the last route)
 app.get('*', function(req, res){
-	Country.find(function(err, countries) {
-			if (err)
-				res.send(err);
-			res.json(countries);
-		});
+	// Country.find(function(err, countries) {
+	// 	if (err)
+	// 		res.send(err);
+	// 	res.json(countries);
+	// });
+	res.send (mongoConnectStr);
 });
 
 
