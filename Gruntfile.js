@@ -21,9 +21,9 @@ module.exports = function(grunt) {
 		    everything: {
 		        src: [
 		       		'src/build/listingslab.js',
-		       		'public/bower_components/jquery/dist/jquery.min.js',
-		       		'public/bower_components/bootstrap/dist/js/bootstrap.min.js',
-		       		'public/bower_components/angular/angular.min.js',
+		       		'bower_components/jquery/dist/jquery.min.js',
+		       		'bower_components/bootstrap/dist/js/bootstrap.min.js',
+		       		'bower_components/angular/angular.min.js',
 		       		'src/build/app.concat.min.js'
 		        ],
 		        // concatonate EVERYTHING into one JS file
@@ -31,8 +31,8 @@ module.exports = function(grunt) {
 		    },
 		    css: {
 		        src: [
-		        	'public/bower_components/bootstrap/dist/css/bootstrap.min.css',
-		        	'public/bower_components/bootstrap/dist/css/bootstrap-theme.min.css',
+		        	'bower_components/bootstrap/dist/css/bootstrap.min.css',
+		        	'bower_components/bootstrap/dist/css/bootstrap-theme.min.css',
 		       		'src/build/css/main.min.css'
 		        ],
 		        // concatonate EVERYTHING into one CSS file
