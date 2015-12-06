@@ -1,46 +1,24 @@
-// modules =================================================
-var express        	= require('express');
-var app            	= express();
-var mongoose		= require('mongoose');
+var ip_addr = process.env.OPENSHIFT_NODEJS_IP   || '127.0.0.1';
+var port    = process.env.OPENSHIFT_NODEJS_PORT || '8080';
 
-// set our port
-var port			= process.env.PORT || 8080;
-var ip				= process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
-
-
-
-var mongoConnectStr = 'mongodb://localhost/worldview';
+// default to a 'localhost' configuration:
+var connection_string = '127.0.0.1:27017/worldview';
 // if OPENSHIFT env variables are present, use the available connection info:
 if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD){
-  mongoConnectStr = 'mongodb://' + process.env.OPENSHIFT_MONGODB_DB_USERNAME + ":" +
+  connection_string = process.env.OPENSHIFT_MONGODB_DB_USERNAME + ":" +
   process.env.OPENSHIFT_MONGODB_DB_PASSWORD + "@" +
   process.env.OPENSHIFT_MONGODB_DB_HOST + ':' +
   process.env.OPENSHIFT_MONGODB_DB_PORT + '/' +
   process.env.OPENSHIFT_APP_NAME;
 }
-mongoose.connect(mongoConnectStr);
-var Country     	= require('./api/models/country');
 
-
-
-//The 404 Route (ALWAYS Keep this as the last route)
-app.get('*', function(req, res){
-	// Country.find(function(err, countries) {
-	// 	if (err)
-	// 		res.send(err);
-	// 	res.json(countries);
-	// });
-	res.send (mongoConnectStr);
-});
-
-
-// start app ===============================================
-app.listen(port, ip);  
-
-// Log to console                    
-console.log('Server running on \nhttp://'+ip+':' + port);
-
-
-
-// expose app           
-exports = module.exports = app;
+//load the Client interface
+var MongoClient = require('mongodb').MongoClient;
+// the client db connection scope is wrapped in a callback:
+MongoClient.connect('mongodb://'+connection_string, function(err, db) {
+  if(err) throw err;
+  var collection = db.collection('countries').find().limit(10).toArray(function(err, docs) {
+    console.dir(docs);
+    db.close();
+  })
+})
