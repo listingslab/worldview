@@ -17,6 +17,16 @@ module.exports = function(grunt) {
 		            'src/angular/controllers/**.js'  
 		        ],
 		        dest: 'public/js/app.concat.js'
+		    },
+		    libs: {
+		        src: [
+		       		'public/libs/jquery/dist/jquery.min.js',
+		       		'public/libs/bootstrap/dist/js/bootstrap.min.js',
+		       		'public/libs/angular/angular.min.js',
+		       		'public/js/app.min.js'
+		        ],
+		        // concatonate everything into one JS file
+		        dest: 'public/js/worldview.concat.js'
 		    }
 		},
 
