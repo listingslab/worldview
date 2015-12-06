@@ -73,12 +73,22 @@ module.exports = function(grunt) {
 	      }
 	    },
 
+	    copy: {
+			fonts:{
+		  		expand: true, 
+		  		flatten: true,
+		  	 	src: ['bower_components/bootstrap/fonts/**'],
+		  		dest: 'public/fonts/',
+		  		filter: 'isFile'
+			},
+		},
+
 	    // COOL TASKS ==============================================================
-	    // watch css and js files and process the above tasks
+	    // watch css and js files and process the tasks
 	    watch: {
 	      css: {
 	        files: ['src/css/**/*.less'],
-	        tasks: ['less', 'cssmin', 'concat:css']
+	        tasks: ['less', 'cssmin', 'concat:css', 'copy']
 	      },
 	      js: {
 	        files: [
@@ -117,8 +127,9 @@ module.exports = function(grunt) {
   	grunt.loadNpmTasks('grunt-contrib-watch');
   	grunt.loadNpmTasks('grunt-concurrent');
   	grunt.loadNpmTasks('grunt-contrib-concat');
+  	grunt.loadNpmTasks('grunt-contrib-copy');
 
   	// register the nodemon task when we run grunt
-  	grunt.registerTask('default', ['less', 'cssmin', 'jshint', 'concat', 'concurrent']); 
+  	grunt.registerTask('default', ['copy', 'less', 'cssmin', 'jshint', 'concat', 'concurrent']); 
 
 };
