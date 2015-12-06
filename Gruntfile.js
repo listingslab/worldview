@@ -11,26 +11,36 @@ module.exports = function(grunt) {
 
 	    // concatonate all the angular files into one
 	    concat: {  
-		    js: {
+		    angular: {
 		        src: [
 		       		'src/angular/app.js',
 		            'src/angular/controllers/**.js'  
 		        ],
-		        dest: 'public/js/app.concat.js'
+		        dest: 'src/build/app.concat.js'
 		    },
-		    libs: {
+		    everything: {
 		        src: [
-		       		'public/libs/jquery/dist/jquery.min.js',
-		       		'public/libs/bootstrap/dist/js/bootstrap.min.js',
-		       		'public/libs/angular/angular.min.js',
-		       		'public/js/app.min.js'
+		       		'src/build/listingslab.js',
+		       		'public/bower_components/jquery/dist/jquery.min.js',
+		       		'public/bower_components/bootstrap/dist/js/bootstrap.min.js',
+		       		'public/bower_components/angular/angular.min.js',
+		       		'src/build/app.concat.min.js'
 		        ],
-		        // concatonate everything into one JS file
-		        dest: 'public/js/worldview.concat.js'
+		        // concatonate EVERYTHING into one JS file
+		        dest: 'public/js/worldview.concat.min.js'
+		    },
+		    css: {
+		        src: [
+		        	'public/bower_components/bootstrap/dist/css/bootstrap.min.css',
+		        	'public/bower_components/bootstrap/dist/css/bootstrap-theme.min.css',
+		       		'src/build/css/main.min.css'
+		        ],
+		        // concatonate EVERYTHING into one CSS file
+		        dest: 'public/css/worldview.concat.min.css'
 		    }
 		},
 
-	    // Minify them into worldviewApp.min.js
+	    // Minify the concatonated Angular file
 	    uglify: {
 	      build: {
 	      	options: {
@@ -38,7 +48,7 @@ module.exports = function(grunt) {
 			  	mangle: false
 			},
 	        files: {
-	          'public/js/app.min.js': ['public/js/app.concat.js']
+	          'src/build/app.concat.min.js': ['src/build/app.concat.js']
 	        }
 	      }
 	    },
@@ -49,7 +59,7 @@ module.exports = function(grunt) {
 	    less: {
 	      build: {
 	        files: {
-	          'public/css/main.css': 'src/css/main.less'
+	          'src/build/css/main.css': 'src/css/main.less'
 	        }
 	      }
 	    },
@@ -58,7 +68,7 @@ module.exports = function(grunt) {
 	    cssmin: {
 	      build: {
 	        files: {
-	          'public/css/main.min.css': 'public/css/main.css'
+	          'src/build/css/main.min.css': 'src/build/css/main.css'
 	        }
 	      }
 	    },
@@ -68,11 +78,16 @@ module.exports = function(grunt) {
 	    watch: {
 	      css: {
 	        files: ['src/css/**/*.less'],
-	        tasks: ['less', 'cssmin']
+	        tasks: ['less', 'cssmin', 'concat:css']
 	      },
 	      js: {
-	        files: ['src/angular/*.js', 'src/angular/**/*.js', 'Gruntfile.js'],
-	        tasks: ['jshint', 'concat', 'uglify']
+	        files: [
+	        	'Gruntfile.js', 
+	        	'src/build/listingslab.js',
+	        	'src/angular/*.js', 
+	        	'src/angular/**/*.js'
+	        ],
+	        tasks: ['jshint', 'concat:angular', 'uglify', 'concat:everything']
 	      }
 	    },
 
@@ -82,7 +97,6 @@ module.exports = function(grunt) {
 	        script: 'server/app.js'
 	      }
 	    },
-
 
 	    // run watch and nodemon at the same time
 	    concurrent: {
