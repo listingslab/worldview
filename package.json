@@ -44,5 +44,5 @@
     "body-parser": "~1.0.1",
     "method-override": "~2.0.2"
   },
-  "main": "mongo_test.js"
+  "main": "server/app.js"
 }
