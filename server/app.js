@@ -1,22 +1,57 @@
-var ip_addr = process.env.OPENSHIFT_NODEJS_IP   || '127.0.0.1';
-var port    = process.env.OPENSHIFT_NODEJS_PORT || '8080';
+// Worldview Server by Listingslab
 
-// default to a 'localhost' configuration:
-var connection_string = '127.0.0.1:27017/worldview';
-// if OPENSHIFT env variables are present, use the available connection info:
-if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD){
-  connection_string = process.env.OPENSHIFT_MONGODB_DB_HOST + ':' +
-  process.env.OPENSHIFT_MONGODB_DB_PORT + '/' +
-  process.env.OPENSHIFT_APP_NAME;
-}
+// modules =================================================
+var express        	= require('express');
+var app            	= express();
+var bodyParser     	= require('body-parser');
+var methodOverride 	= require('method-override');
 
-//load the Client interface
-var MongoClient = require('mongodb').MongoClient;
-// the client db connection scope is wrapped in a callback:
-MongoClient.connect('mongodb://'+connection_string, function(err, db) {
-  if(err) throw err;
-  var collection = db.collection('countries').find().limit(10).toArray(function(err, docs) {
-    console.dir(docs);
-    db.close();
-  })
-})
+// configuration ===========================================
+    
+// config files
+//var db				= require('./config/db');
+
+// set our port
+var port			= process.env.PORT || 8080;
+var ip				= process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
+
+// parse application/json 
+app.use(bodyParser.json()); 
+
+// parse application/vnd.api+json as json
+app.use(bodyParser.json({ type: 'application/vnd.api+json' })); 
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: true })); 
+
+// override with the X-HTTP-Method-Override header in the request. simulate DELETE/PUT
+app.use(methodOverride('X-HTTP-Method-Override')); 
+
+// set the static files location /public/img will be /img for users
+app.use(express.static('./public'));
+
+
+// API router ==============================================
+// Use the API router if the url requires it, otherwise 
+// routing is handled by angular SPA
+
+var router			= require('./api/api_router');
+app.use('/api', router);
+
+//The 404 Route (ALWAYS Keep this as the last route)
+app.get('*', function(req, res){
+	console.log('404 Error');
+	res.sendfile('./public/404.html');
+});
+
+
+
+// start app ===============================================
+app.listen(port, ip);               
+
+// Log to console                    
+console.log('Server running on \nhttp://'+ip+':' + port);
+
+// expose app           
+exports = module.exports = app;
+
