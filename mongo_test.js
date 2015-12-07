@@ -5,7 +5,7 @@ var mongodb = require('mongodb');
 var MongoClient = mongodb.MongoClient;
 
 // Connection URL. This is where your mongodb server is running.
-var url = 'mongodb://localhost/worldview';
+var url = 'localhost/worldview';
 
 // if OPENSHIFT env variables are present, use the available connection info:
 if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD){
@@ -17,7 +17,7 @@ if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD){
 }
 
 // Use connect method to connect to the Server
-MongoClient.connect(url, function (err, db) {
+MongoClient.connect('mongodb://'+ url, function (err, db) {
   if (err) {
     console.log('Unable to connect to the mongoDB server. Error:', err);
   } else {
