@@ -1,25 +1,32 @@
+//lets require/import the mongodb native drivers.
+var mongodb = require('mongodb');
 
-var express        	= require('express');
-var app            	= express();
-var mongoose		= require('mongoose');
+//We need to work with "MongoClient" interface in order to connect to a mongodb server.
+var MongoClient = mongodb.MongoClient;
 
-var mongoConnectStr = 'mongodb://localhost/worldview';
+// Connection URL. This is where your mongodb server is running.
+var url = 'mongodb://localhost/worldview';
+
 // if OPENSHIFT env variables are present, use the available connection info:
 if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD){
-  mongoConnectStr = process.env.OPENSHIFT_MONGODB_DB_USERNAME + ":" +
+  url = process.env.OPENSHIFT_MONGODB_DB_USERNAME + ":" +
   process.env.OPENSHIFT_MONGODB_DB_PASSWORD + "@" +
   process.env.OPENSHIFT_MONGODB_DB_HOST + ':' +
   process.env.OPENSHIFT_MONGODB_DB_PORT + '/' +
   process.env.OPENSHIFT_APP_NAME;
 }
 
+// Use connect method to connect to the Server
+MongoClient.connect(url, function (err, db) {
+  if (err) {
+    console.log('Unable to connect to the mongoDB server. Error:', err);
+  } else {
+    //HURRAY!! We are connected. :)
+    console.log('Connection established to', url);
 
-app.get('*', function(req, res){
-	console.log('Send response back on request');
-	res.send('mongoConnectStr: ' + mongoConnectStr);
+    // do some work here with the database.
+
+    //Close connection
+    db.close();
+  }
 });
-
-
-var port			= process.env.PORT || 8080;
-var ip				= process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
-app.listen(port, ip);               
