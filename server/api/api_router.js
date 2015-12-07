@@ -15,9 +15,6 @@ if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD){
 }
 mongoose.connect(mongoConnectStr);
 
-
-var Country     	= require('./models/country');
-
 // middleware to use for all requests
 router.use(function(req, res, next) {
     // do logging
@@ -34,6 +31,7 @@ router.get('/', function(req, res) {
 
 // on routes that end in /countries (accessed at GET /api/countries)
 // ----------------------------------------------------
+var Country     	= require('./models/country');
 router.route('/countries')
 
 	.get(function(req, res) {
