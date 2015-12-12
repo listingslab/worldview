@@ -1,4 +1,15 @@
 // countriesController
 app.controller ('countriesController', function ($scope) {
-	$scope.title = 'Select Continent';
+	$scope.title = 'Select a Continent';
+
+
+	$scope.continents = [
+		{"Continent":"North America"},
+		{"Continent":"Asia"},
+		{"Continent":"Africa"},
+		{"Continent":"Europe"},
+		{"Continent":"South America"},
+		{"Continent":"Oceania"},
+		{"Continent":"Antarctica"}
+	];
 });
