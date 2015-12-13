@@ -17,7 +17,7 @@ angular
     'ngSanitize',
     'ngTouch'
   ])
-  .config(function ($routeProvider) {
+  .config(function ($routeProvider, $locationProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
@@ -29,7 +29,19 @@ angular
         controller: 'AboutCtrl',
         controllerAs: 'about'
       })
+      .when('/github', {
+        templateUrl: 'views/github.html',
+        controller: 'GithubCtrl',
+        controllerAs: 'github'
+      })
+      .when('/api', {
+        templateUrl: 'views/api.html',
+        controller: 'ApiCtrl',
+        controllerAs: 'api'
+      })
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/404.html'
       });
+
+      $locationProvider.html5Mode(true);
   });
