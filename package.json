@@ -1,5 +1,23 @@
 {
   "name": "worldview",
+  "version": "0.2.0",
+  "author": "Chris Dorward <listingslab@gmail.com>",
+  "description": "Full stack MEAN application. An example of an SPA using MongoDB, Express, AngularJS & NodeJS",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/listingslab/worldview.git"
+  },
+  "keywords": [
+    "MEAN",
+    "MongoDB",
+    "express",
+    "angular",
+    "NodeJS"
+  ],
+  "license": "MIT",
   "private": true,
   "devDependencies": {
     "autoprefixer-core": "^5.2.1",
@@ -19,17 +37,24 @@
     "grunt-filerev": "^2.1.2",
     "grunt-google-cdn": "^0.4.3",
     "grunt-jscs": "^1.8.0",
+    "grunt-karma": "^0.12.1",
     "grunt-newer": "^1.1.0",
     "grunt-ng-annotate": "^0.9.2",
     "grunt-postcss": "^0.5.5",
     "grunt-svgmin": "^2.0.0",
     "grunt-usemin": "^3.0.0",
     "grunt-wiredep": "^2.0.0",
+    "jasmine-core": "^2.4.1",
     "jit-grunt": "^0.9.1",
-    "time-grunt": "^1.0.0",
-    "jshint-stylish": "^1.0.0"
+    "jshint-stylish": "^1.0.0",
+    "karma": "^0.13.15",
+    "karma-jasmine": "^0.3.6",
+    "karma-phantomjs-launcher": "^0.2.1",
+    "phantomjs": "^1.9.19",
+    "time-grunt": "^1.0.0"
   },
   "engines": {
     "node": ">=0.10.0"
-  }
+  },
+  "main": "server/app.js"
 }
