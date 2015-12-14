@@ -34,13 +34,13 @@ angular
         controller: 'GithubCtrl',
         controllerAs: 'github'
       })
-      .when('/api', {
-        templateUrl: 'views/api.html',
-        controller: 'ApiCtrl',
-        controllerAs: 'api'
+      .when('/restfulapi', {
+        templateUrl: 'views/restfulapi.html',
+        controller: 'RestfulapiCtrl',
+        controllerAs: 'restfulapi'
       })
       .otherwise({
-        redirectTo: '/404.html'
+        redirectTo: '404.html'
       });
 
       $locationProvider.html5Mode(true);

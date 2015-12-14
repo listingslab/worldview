@@ -42,9 +42,11 @@
             <ul class="nav navbar-nav" ng-controller="NavigationCtrl">
               <li ng-class="{ active: isCurrentPath('/') }"><a href="/">Home</a></li>
               <li ng-class="{ active: isCurrentPath('/about') }"><a ng-href="about">About</a></li>
-              <li ng-class="{ active: isCurrentPath('/api') }"><a ng-href="api">API</a></li>
-              <li ng-class="{ active: isCurrentPath('/github') }"><a ng-href="github">Github</a></li>
+              <li ng-class="{ active: isCurrentPath('/restfulapi') }"><a ng-href="restfulapi">RESTful API</a></li>
             </ul>
+
+            <button type="submit" class="btn btn-success navbar-btn pull-right" data-toggle="modal" data-target="#loginModal">Login</button>
+
           </div>
         </div>
       </div>
@@ -79,9 +81,40 @@
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
-        <script src="scripts/controllers/github.js"></script>
-        <script src="scripts/controllers/api.js"></script>
+        <script src="scripts/controllers/restfulapi.js"></script>
         <script src="scripts/controllers/navigation.js"></script>
         <!-- endbuild -->
+
+
+        <!-- LoginModal -->
+        <div id="loginModal" class="modal fade" role="dialog">
+          <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Login to Worldview</h4>
+              </div>
+
+              <div class="modal-body">
+                <form class="">
+                  <div class="form-group">
+                    <input type="text" placeholder="Email" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <input type="password" placeholder="Password" class="form-control">
+                  </div>
+                  <button type="submit" class="btn btn-success">Login</button>
+                </form>
+              </div>
+              <div class="modal-footer">
+                
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+
 </body>
 </html>
