@@ -12,6 +12,9 @@ var ip				= process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
 // Set the static files location /dist/img will be /img for users
 app.use(express.static('./dist'));
 
+var router			= require('./api/router');
+app.use('/api', router);
+
 // Start app ===============================================
 app.listen(port, ip);               
 

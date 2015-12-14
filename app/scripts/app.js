@@ -40,7 +40,7 @@ angular
         controllerAs: 'restfulapi'
       })
       .otherwise({
-        redirectTo: '404.html'
+        templateUrl: 'views/404.html',
       });
 
       $locationProvider.html5Mode(true);
