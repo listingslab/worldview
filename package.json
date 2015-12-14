@@ -2,7 +2,7 @@
   "name": "worldview",
   "version": "0.2.0",
   "author": "Chris Dorward <listingslab@gmail.com>",
-  "description": "Full stack MEAN application. An example of an SPA using MongoDB, Express, AngularJS & NodeJS",
+  "description": "Full stack MEAN application hosted on OpenShift. Example of an SPA using MongoDB, Express, AngularJS & NodeJS",
   "scripts": {
     "test": "grunt test"
   },
@@ -15,7 +15,8 @@
     "MongoDB",
     "express",
     "angular",
-    "NodeJS"
+    "NodeJS",
+    "Openshifts"
   ],
   "license": "MIT",
   "devDependencies": {

@@ -2,9 +2,9 @@
 
 /**
  * @ngdoc function
- * @name worldviewApp.controller:NavigationctrlCtrl
+ * @name worldviewApp.controller:NavigationCtrl
  * @description
- * # NavigationctrlCtrl
+ * # NavigationCtrl
  * Controller of the worldviewApp
  */
 angular.module('worldviewApp')
