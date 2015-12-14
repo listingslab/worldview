@@ -18,5 +18,5 @@ angular.module('worldviewApp')
 
     $scope.at = this.awesomeThings;
 
-
+    // Here is the main controller
   });
